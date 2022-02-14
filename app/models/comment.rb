@@ -8,4 +8,8 @@ class Comment < ApplicationRecord
   def article_should_be_published
     errors.add(:article_id, 'is not published yet') if article && !article.published?
   end
+
+  def after_create
+    puts "We will notify the authory #{article.user.email} in Chapter 12"
+  end
 end
