@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 2022_02_11_212111) do
     t.index ["category_id", "article_id"], name: "index_articles_categories_on_category_id_and_article_id"
   end
 
+  create_table "aticles_categories", id: false, force: :cascade do |t|
+    t.integer "aticle_id", null: false
+    t.integer "category_id", null: false
+    t.index "\"aticle_id\", \"categroy_id\"", name: "index_aticles_categories_on_aticle_id_and_categroy_id"
+    t.index "\"categroy_id\", \"aticle_id\"", name: "index_aticles_categories_on_categroy_id_and_aticle_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
